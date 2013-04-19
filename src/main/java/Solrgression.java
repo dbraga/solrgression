@@ -23,6 +23,9 @@ import java.util.regex.Pattern;
 public class Solrgression {
 
   private static final Logger LOG = Logger.getLogger(Solrgression.class);
+  private static final String logFile = "REQUEST_LOG_FILE_URI";
+  private static final String solrInstanceUriA = "SOLR_URI_A";
+  private static final String solrInstanceUriB = "SOLR_URI_B";
 
   public String httpRequest(GetMethod method){
     String httpResponse = "";
@@ -275,12 +278,6 @@ public class Solrgression {
     return params;
   }
 
-  private static final String logFile = "/tmp/2013_04_17.rentals-request.log";
-  private static final String solrInstanceUriA = "http://devindex2.sv2.trulia.com:6070"+ "/rentals/select/";
-  private static final String solrInstanceUriB = "http://devindex2.sv2.trulia.com:6071" + "/rentals/select/";
-
-
-
   public int count(String filename) throws IOException {
     InputStream is = new BufferedInputStream(new FileInputStream(filename));
     try {
@@ -336,22 +333,13 @@ public class Solrgression {
                 LOG.info("##########################################");
               }
             } else LOG.error("No valid json response. This line is not valid: "+line);
-
           }
-
         }
         pointer++;
-
-
       }
     } finally {
       br.close();
     }
-
-
-
-
-
   }
 
 
